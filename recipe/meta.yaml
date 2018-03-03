@@ -1,4 +1,4 @@
-{% set version = "2.2.1" %}
+{% set version = "2.3" %}
 {% set variant = "openblas" %}
 
 package:
@@ -7,13 +7,13 @@ package:
 
 source:
   url: http://ftpmirror.gnu.org/gsl/gsl-{{ version }}.tar.gz
-  sha256: 13d23dc7b0824e1405f3f7e7d0776deee9b8f62c62860bf66e7852d402b8b024
+  sha256: 562500b789cd599b3a4f88547a7a3280538ab2ff4939504c8b4ac4ca25feadfb
   patches:
   # https://github.com/ampl/gsl/
   - patch_cmake_for_windows.diff  # [win]
 
 build:
-  number: 4
+  number: 0
   skip: True  # [win and py36]
   features:
     - vc9    # [win and py27]
