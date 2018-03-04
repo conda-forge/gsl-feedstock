@@ -1,14 +1,21 @@
+From ed7d0dd53370d3e48058f339f63af05947859527 Mon Sep 17 00:00:00 2001
+From: "Dougal J. Sutherland" <dougal@gmail.com>
+Date: Sat, 3 Mar 2018 23:11:26 +0000
+Subject: [PATCH] relevant changes from ampl/gsl
+
 ---
  CMakeLists.txt                 | 711 +++++++++++++++++++++++++++++++++++++++++
  cmake/c_flag_overrides.cmake   |   6 +
  cmake/cxx_flag_overrides.cmake |   6 +
  cmake/init.cmake               |  92 ++++++
+ gsl.pc.cmake                   |  11 +
  gsl_inline.h                   |   2 +-
- 5 files changed, 816 insertions(+), 1 deletion(-)
+ 6 files changed, 827 insertions(+), 1 deletion(-)
  create mode 100644 CMakeLists.txt
  create mode 100644 cmake/c_flag_overrides.cmake
  create mode 100644 cmake/cxx_flag_overrides.cmake
  create mode 100644 cmake/init.cmake
+ create mode 100644 gsl.pc.cmake
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 new file mode 100644
@@ -849,6 +856,23 @@ index 0000000..df402ae
 +\\Reference Assemblies\\Microsoft\\Framework\\.NETFramework\\v4.0^\" %*")
 +  endif ()
 +endif ()
+diff --git a/gsl.pc.cmake b/gsl.pc.cmake
+new file mode 100644
+index 0000000..2ffb37f
+--- /dev/null
++++ b/gsl.pc.cmake
+@@ -0,0 +1,11 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=@CMAKE_INSTALL_PREFIX@
++libdir=${prefix}/lib
++includedir=${prefix}/include
++GSL_CBLAS_LIB=-lgslcblas
++
++Name: GSL
++Description: GNU Scientific Library
++Version: @PACKAGE_VERSION@
++Libs: -L${libdir} -lgsl ${GSL_CBLAS_LIB} -lm -lm
++Cflags: -I${includedir}
 diff --git a/gsl_inline.h b/gsl_inline.h
 index 2172201..8a00378 100644
 --- a/gsl_inline.h
