@@ -14,14 +14,16 @@ Summary: GNU Scientific Library.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/gsl-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/gsl-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/gsl-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/gsl-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/gsl-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/gsl-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/gsl-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/gsl-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/gsl-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/gsl-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/gsl/badges/version.svg)](https://anaconda.org/conda-forge/gsl)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/gsl/badges/downloads.svg)](https://anaconda.org/conda-forge/gsl)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gsl-green.svg)](https://anaconda.org/conda-forge/gsl) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gsl.svg)](https://anaconda.org/conda-forge/gsl) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gsl.svg)](https://anaconda.org/conda-forge/gsl) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gsl.svg)](https://anaconda.org/conda-forge/gsl) |
 
 Installing gsl
 ==============
