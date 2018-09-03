@@ -1,4 +1,4 @@
-{% set version = "2.4" %}
+{% set version = "2.2.1" %}
 {% set variant = "openblas" %}
 
 package:
@@ -7,15 +7,13 @@ package:
 
 source:
   url: http://ftp.gnu.org/gnu/gsl/gsl-{{ version }}.tar.gz
-  sha256: 4d46d07b946e7b31c19bbf33dda6204d7bedc2f5462a1bae1d4013426cd1ce9b
+  sha256: 13d23dc7b0824e1405f3f7e7d0776deee9b8f62c62860bf66e7852d402b8b024
   patches:
     # diff from source distribution to https://github.com/ampl/gsl/tree/v2.4.0
     - patch_cmake_for_windows.diff  # [win]
-    # avoid "make check" error: https://savannah.gnu.org/bugs/?52927
-    - bessel_test.diff
 
 build:
-  number: 1
+  number: 5
   features:
     - blas_{{ variant }}  # [not win]
   run_exports:
