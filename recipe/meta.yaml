@@ -13,7 +13,7 @@ source:
     - patch_cmake_for_windows.diff  # [win]
 
 build:
-  number: 5
+  number: 6
   features:
     - blas_{{ variant }}  # [not win]
   run_exports:
