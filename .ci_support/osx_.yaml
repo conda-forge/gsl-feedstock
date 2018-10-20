@@ -11,7 +11,7 @@ macos_machine:
 macos_min_version:
 - '10.9'
 openblas:
-- 0.2.20
+- 0.3.3
 pin_run_as_build:
   openblas:
     max_pin: x.x.x
