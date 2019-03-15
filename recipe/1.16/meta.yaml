@@ -1,0 +1,52 @@
+{% set version = "1.16" %}
+{% set variant = "openblas" %}
+
+package:
+  name: gsl
+  version: {{ version }}
+
+source:
+  url: http://ftp.gnu.org/gnu/gsl/gsl-{{ version }}.tar.gz
+  sha256: 73bc2f51b90d2a780e6d266d43e487b3dbd78945dd0b04b14ca5980fe28d2f53
+  
+
+build:
+  number: 1000
+  features:
+    - blas_{{ variant }}  # [not win]
+  run_exports:
+    # tends to break at minor revs
+    #    https://abi-laboratory.pro/index.php?view=timeline&l=gsl
+    - {{ pin_subpackage("gsl", max_pin="x.x") }}
+
+requirements:
+  build:
+    - {{ compiler("c") }}
+    - cmake  # [win]
+  host:
+    - blas 1.1 {{ variant }}    # [not win]
+    - openblas                  # [not win]
+  run:
+    - blas 1.1 {{ variant }}    # [not win]
+    - openblas                  # [not win]
+
+test:
+  commands:
+    - gsl-config --prefix  # [not win]
+    - if not exist %LIBRARY_LIB%\\gsl.lib       exit 1   # [win]
+    - if not exist %LIBRARY_LIB%\\gslcblas.lib  exit 1   # [win]
+    - if not exist %LIBRARY_BIN%\\gsl.dll       exit 1   # [win]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+
+about:
+  home: http://www.gnu.org/software/gsl/
+  license: GPL-3.0
+  license_file: COPYING
+  summary: 'GNU Scientific Library'
+
+extra:
+  recipe-maintainers:
+    - kwilcox
+    - mingwandroid
+    - ocefpaf
