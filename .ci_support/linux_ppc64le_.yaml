@@ -1,9 +1,13 @@
 c_compiler:
-- vs2015
+- gcc
+c_compiler_version:
+- '8'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+docker_image:
+- condaforge/linux-anvil-ppc64le
 libblas:
 - 3.8 *netlib
 libcblas:
