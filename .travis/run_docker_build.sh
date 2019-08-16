@@ -70,4 +70,4 @@ docker run ${DOCKER_RUN_ARGS} \
            /home/conda/feedstock_root/${PROVIDER_DIR}/build_steps.sh
 
 # verify that the end of the script was reached
-test -f "$DONE_CANARY
+test -f "$DONE_CANARY"
