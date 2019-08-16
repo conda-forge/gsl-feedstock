@@ -12,7 +12,7 @@ source:
     - patch_cmake_for_windows.diff  # [win]
 
 build:
-  number: 0
+  number: 1
   features:
   run_exports:
     # tends to break at minor revs
