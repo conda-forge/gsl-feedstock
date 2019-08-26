@@ -9,7 +9,7 @@ export AS=llvm-as
 export AR=llvm-ar
 export NM=llvm-nm
 export LD=lld-link
-export CFLAGS="-I$PREFIX/include -O2 -D_CRT_SECURE_NO_WARNINGS -D_MT -D_DLL -v-fuse-ld=lld -nostdlib -Xclang --dependent-lib=msvcrt"
+export CFLAGS="-I$PREFIX/include -O2 -D_CRT_SECURE_NO_WARNINGS -D_MT -D_DLL -v -fuse-ld=lld -nostdlib -Xclang --dependent-lib=msvcrt"
 export CXXFLAGS="$CFLAGS"
 export CPPFLAGS="$CFLAGS"
 #export LIBS="-lmsvcrt"
