@@ -9,6 +9,8 @@ source:
   sha256: 0460ad7c2542caaddc6729762952d345374784100223995eb14d614861f2258d
   patches:
     # diff from source distribution to https://github.com/ampl/gsl/tree/v2.4.0
+    # Second patch is to work around lack of tolerance controls in gsl
+    # See: https://savannah.gnu.org/bugs/index.php?56843
     - patch_cmake_for_windows.diff  # [win]
     - xfails-on-ppc64le-for-tolerance.patch  # [not x86_64]
 
