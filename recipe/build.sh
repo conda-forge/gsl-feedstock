@@ -23,7 +23,7 @@ fi
 
 # Don't link with the convenience libraries as they don't contain __imp_*
 if [[ "$target_platform" == win* ]]; then
-    make -j${CPU_COUNT} -k
+    make -j${CPU_COUNT} -k || true
     for f in $(find . -wholename "./*/.libs/*.lib" -not -wholename "./blas/*"  -not -wholename "./cblas/*"); do
         cp .libs/gsl.dll.lib $f
     done
