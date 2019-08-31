@@ -10,7 +10,7 @@ source:
   patches:
     # diff from source distribution to https://github.com/ampl/gsl/tree/v2.4.0
     - patch_cmake_for_windows.diff  # [win]
-    - xfails-on-ppc64le-for-tolerance.patch  # [ppc64le and aarch64]
+    - xfails-on-ppc64le-for-tolerance.patch  # [not x86_64]
 
 build:
   number: 1
