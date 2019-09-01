@@ -34,8 +34,12 @@ test:
     - if not exist %LIBRARY_LIB%\\gsl.lib       exit 1   # [win]
     - if not exist %LIBRARY_LIB%\\gslcblas.lib  exit 1   # [win]
     - if not exist %LIBRARY_BIN%\\gsl*.dll      exit 1   # [win]
-    - test -f $PREFIX/lib/libgslcblas{{ SHLIB_EXT }}     # [not win]
-    - test -f $PREFIX/lib/libgslcblas*{{ SHLIB_EXT }}*   # [not win]
+    - ls -al $PREFIX/lib/libgsl${SHLIB_EXT}              # [not win]
+    - ls -al $PREFIX/lib/libgslcblas${SHLIB_EXT}         # [not win]
+    - ls -al $PREFIX/lib/libgslcblas.0.dylib             # [osx]
+    - ls -al $PREFIX/lib/libgsl.*.dylib                  # [osx]
+    - ls -al $PREFIX/lib/libgslcblas.so.0                # [linux]
+    - ls -al $PREFIX/lib/libgsl.so.*                     # [linux]
 
 about:
   home: http://www.gnu.org/software/gsl/
