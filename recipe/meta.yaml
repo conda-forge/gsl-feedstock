@@ -11,7 +11,7 @@ source:
     # Taken from https://github.com/ampl/gsl/tree/v2.4.0
     - patch_for_windows.diff  # [win]
     # Second patch is to work around lack of tolerance controls in gsl
-    - xfails-on-ppc64le-for-tolerance.patch  # [not x86_64]
+    - xfails-on-ppc64le-for-tolerance.patch  # [ppc64le]
 
 build:
   number: 0
