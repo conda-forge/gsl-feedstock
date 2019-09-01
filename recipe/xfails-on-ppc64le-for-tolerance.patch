@@ -1,14 +1,3 @@
-diff -ruN gsl-2.5/eigen/Makefile.in gsl-2.5.new/eigen/Makefile.in
---- gsl-2.5/eigen/Makefile.in	2018-06-13 20:31:02.000000000 +0000
-+++ gsl-2.5.new/eigen/Makefile.in	2019-08-30 22:31:35.044632969 +0000
-@@ -530,6 +530,7 @@
- AM_CPPFLAGS = -I$(top_srcdir)
- noinst_HEADERS = qrstep.c
- TESTS = $(check_PROGRAMS)
-+XFAIL_TESTS = $(check_PROGRAMS)
- test_LDADD = libgsleigen.la  ../test/libgsltest.la ../linalg/libgsllinalg.la ../permutation/libgslpermutation.la ../blas/libgslblas.la ../cblas/libgslcblas.la ../matrix/libgslmatrix.la ../vector/libgslvector.la ../block/libgslblock.la  ../complex/libgslcomplex.la ../ieee-utils/libgslieeeutils.la ../sys/libgslsys.la ../err/libgslerr.la ../utils/libutils.la ../rng/libgslrng.la ../sort/libgslsort.la
- test_SOURCES = test.c
- all: all-am
 diff -ruN gsl-2.5/linalg/Makefile.in gsl-2.5.new/linalg/Makefile.in
 --- gsl-2.5/linalg/Makefile.in	2018-06-13 20:31:03.000000000 +0000
 +++ gsl-2.5.new/linalg/Makefile.in	2019-08-30 22:31:10.155673925 +0000
