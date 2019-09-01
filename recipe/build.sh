@@ -2,6 +2,9 @@
 
 set -e
 
+# Don't link to libgslcblas on windows
+sed -i.bak "s/GSL_LIBADD=/GSL_LIBADD2=/g" configure.ac
+
 # https://github.com/conda-forge/gsl-feedstock/issues/34#issuecomment-449305702
 if [[ "$target_platform" == win* ]]; then
     export CPPFLAGS="$CPPFLAGS -DGSL_DLL -DWIN32"
@@ -50,7 +53,7 @@ elif [[ "$target_platform" == linux* ]]; then
     ln -sf "libcblas.so.3" "$PREFIX/lib/libgslcblas.so.0"
     rm "$PREFIX/lib/libcblas.so.3"
     touch "$PREFIX/lib/libcblas.so.3"
-elif [[ "$target_platform" == linux* ]]; then
+elif [[ "$target_platform" == win* ]]; then
     rm "$PREFIX/lib/gslcblas.dll.lib"
     rm "$PREFIX/bin/gslcblas-0.dll"
     cp "$PREFIX/lib/cblas.lib" "$PREFIX/lib/gslcblas.lib"
