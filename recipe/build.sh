@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 
 # Don't link to libgslcblas on windows
 sed -i.bak "s/GSL_LIBADD=/GSL_LIBADD2=/g" configure.ac
