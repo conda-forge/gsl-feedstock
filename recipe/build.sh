@@ -5,6 +5,9 @@ set -e
 # Don't link to libgslcblas on windows
 sed -i.bak "s/GSL_LIBADD=/GSL_LIBADD2=/g" configure.ac
 
+autoreconf -i
+chmod +x configure
+
 # https://github.com/conda-forge/gsl-feedstock/issues/34#issuecomment-449305702
 if [[ "$target_platform" == win* ]]; then
     export CPPFLAGS="$CPPFLAGS -DGSL_DLL -DWIN32"
