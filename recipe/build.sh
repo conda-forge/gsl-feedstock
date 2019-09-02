@@ -46,6 +46,7 @@ else
         TEST_DIR=$(dirname $f)
         pushd $TEST_DIR;
         SKIP=false
+        # See: https://savannah.gnu.org/bugs/index.php?56843
         if [[ "$target_platform" == "linux-aarch64" && "$TEST_DIR" == "spmatrix" ]]; then
             SKIP=true
         fi
