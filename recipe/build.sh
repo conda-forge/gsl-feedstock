@@ -36,9 +36,30 @@ if [[ "$target_platform" == win* ]]; then
     make -j${CPU_COUNT}
     make install
     # There are some numerical issues with the tests as well. So disable for now. CMake build didn't run tests either.
+    make check -j${CPU_COUNT}
     echo "no check on windows"
 else
     make -j${CPU_COUNT}
+    make test -j${CPU_COUNT}
+    for f in $(find * -name "test.c"); do
+        TEST_DIR=$(dirname $f)
+        pushd $TEST_DIR;
+        SKIP=false
+        if [[ "$target_platform" == "linux-aarch64" && "$TEST_DIR" == "spmatrix" ]]; then
+            SKIP=true
+        fi
+        if [[ "$target_platform" == "linux-ppc64le" ]]; then
+            if [[ "$TEST_DIR" == "linalg" || "$TEST_DIR" == "multilarge_nlinear" || "$TEST_DIR" == "spmatrix" ]]; then
+                SKIP=true
+            fi
+        fi
+        if [[ "$SKIP" == true ]]; then
+            make check || true;
+        else
+            make check;
+        fi
+        popd;
+    done
     make check
     make install
 fi
