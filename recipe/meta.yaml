@@ -1,4 +1,4 @@
-{% set version = "2.5" %}
+{% set version = "2.6" %}
 
 package:
   name: gsl
@@ -6,28 +6,28 @@ package:
 
 source:
   url: http://ftp.gnu.org/gnu/gsl/gsl-{{ version }}.tar.gz
-  sha256: 0460ad7c2542caaddc6729762952d345374784100223995eb14d614861f2258d
+  sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
   patches:
-    # diff from source distribution to https://github.com/ampl/gsl/tree/v2.4.0
-    # Second patch is to work around lack of tolerance controls in gsl
-    # See: https://savannah.gnu.org/bugs/index.php?56843
-    - patch_cmake_for_windows.diff  # [win]
-    - xfails-on-ppc64le-for-tolerance.patch  # [not x86_64]
+    # Taken from https://github.com/ampl/gsl/tree/v2.4.0
+    - patch_for_windows.diff  # [win]
 
 build:
-  number: 1
-  features:
+  number: 0
+  skip:  True  # [win and vc<14]
   run_exports:
     # tends to break at minor revs
-    #    https://abi-laboratory.pro/index.php?view=timeline&l=gsl
+    # https://abi-laboratory.pro/index.php?view=timeline&l=gsl
     - {{ pin_subpackage("gsl", max_pin="x.x") }}
 
 requirements:
   build:
     - {{ compiler("c") }}
-    - cmake  # [win]
+    - autotools_clang_conda     # [win]
+    - autoconf                  # [unix]
+    - automake                  # [unix]
+    - libtool                   # [unix]
+    - make                      # [unix]
   host:
-    - make
     - libblas
     - libcblas
   run:
@@ -37,16 +37,20 @@ test:
     - gsl-config --prefix  # [not win]
     - if not exist %LIBRARY_LIB%\\gsl.lib       exit 1   # [win]
     - if not exist %LIBRARY_LIB%\\gslcblas.lib  exit 1   # [win]
-    - if not exist %LIBRARY_BIN%\\gsl.dll       exit 1   # [win]
-    - ls -al $PREFIX/lib/libgslcblas.so.0      # [linux]
-    - ls -al $PREFIX/lib/libgslcblas.so        # [linux]
-    - ls -al $PREFIX/lib/libgslcblas.0.dylib   # [osx]
-    - ls -al $PREFIX/lib/libgslcblas.dylib     # [osx]
+    - if not exist %LIBRARY_BIN%\\gsl*.dll      exit 1   # [win]
+    - ls -al $PREFIX/lib/libgsl${SHLIB_EXT}              # [not win]
+    - ls -al $PREFIX/lib/libgslcblas${SHLIB_EXT}         # [not win]
+    - ls -al $PREFIX/lib/libgslcblas.0.dylib             # [osx]
+    - ls -al $PREFIX/lib/libgsl.*.dylib                  # [osx]
+    - ls -al $PREFIX/lib/libgslcblas.so.0                # [linux]
+    - ls -al $PREFIX/lib/libgsl.so.*                     # [linux]
 
 about:
   home: http://www.gnu.org/software/gsl/
   license: GPL-3.0
-  license_file: COPYING
+  license_file:
+    - COPYING
+    - getopt_LICENSE.txt  # [win]
   summary: 'GNU Scientific Library'
 
 extra:
