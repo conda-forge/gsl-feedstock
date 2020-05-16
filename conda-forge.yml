@@ -4,3 +4,4 @@ travis:
 appveyor:
   secure:
     BINSTAR_TOKEN: KDvUkPrcdKmV2MxakkyQlrLA0rE/6WSuXxD42UezzZjCB0TRqnnOeebSW03/SnFP
+conda_forge_output_validation: true
