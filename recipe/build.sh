@@ -43,6 +43,7 @@ if [[ "$target_platform" == win* ]]; then
     echo "no check on windows"
 else
     make -j${CPU_COUNT}
+    if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
     for f in $(find * -name "test.c"); do
         TEST_DIR=$(dirname $f)
         pushd $TEST_DIR;
@@ -63,6 +64,7 @@ else
         fi
         popd;
     done
+    fi
     make install
 fi
 
