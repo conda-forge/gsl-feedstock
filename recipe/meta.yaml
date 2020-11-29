@@ -47,7 +47,7 @@ test:
 
 about:
   home: http://www.gnu.org/software/gsl/
-  license: GPL-3.0
+  license: GPL-3.0-or-later
   license_file:
     - COPYING
     - getopt_LICENSE.txt  # [win]
