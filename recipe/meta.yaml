@@ -12,7 +12,7 @@ source:
     - patch_for_windows.diff  # [win]
 
 build:
-  number: 0
+  number: 1
   skip:  True  # [win and vc<14]
   run_exports:
     # tends to break at minor revs
@@ -47,7 +47,7 @@ test:
 
 about:
   home: http://www.gnu.org/software/gsl/
-  license: GPL-3.0
+  license: GPL-3.0-or-later
   license_file:
     - COPYING
     - getopt_LICENSE.txt  # [win]

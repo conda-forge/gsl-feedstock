@@ -3,7 +3,7 @@ About gsl
 
 Home: http://www.gnu.org/software/gsl/
 
-Package license: GPL-3.0
+Package license: GPL-3.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gsl-feedstock/blob/master/LICENSE.txt)
 
