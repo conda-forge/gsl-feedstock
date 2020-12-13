@@ -12,7 +12,7 @@ source:
     - patch_for_windows.diff  # [win]
 
 build:
-  number: 1
+  number: 2
   skip:  True  # [win and vc<14]
   run_exports:
     # tends to break at minor revs
@@ -33,6 +33,12 @@ requirements:
   run:
 
 test:
+  files:
+    - test
+
+  requires:
+    - {{ compiler('c') }}
+
   commands:
     - gsl-config --prefix  # [not win]
     - if not exist %LIBRARY_LIB%\\gsl.lib       exit 1   # [win]
