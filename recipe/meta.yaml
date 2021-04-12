@@ -50,6 +50,7 @@ test:
     - ls -al $PREFIX/lib/libgsl.*.dylib                  # [osx]
     - ls -al $PREFIX/lib/libgslcblas.so.0                # [linux]
     - ls -al $PREFIX/lib/libgsl.so.*                     # [linux]
+    - test ! -f ${PREFIX}/lib/libgsl.a                   # [linux]
 
 about:
   home: http://www.gnu.org/software/gsl/
