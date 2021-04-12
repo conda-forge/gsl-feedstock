@@ -22,8 +22,11 @@ if [[ "$target_platform" == win* ]]; then
     cat config.log
 else
     export LIBS="-lcblas -lm"
-    ./configure --prefix=${PREFIX}  \
-                --host=${HOST} || (cat config.log && exit 1)
+    ./configure \
+        --prefix=${PREFIX}  \
+        --host=${HOST} \
+        --disable-static \
+        || (cat config.log && exit 1)
 fi
 
 [[ "$target_platform" == "win-64" ]] && patch_libtool
