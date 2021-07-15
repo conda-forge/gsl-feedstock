@@ -1,4 +1,4 @@
-{% set version = "2.6" %}
+{% set version = "2.7" %}
 
 package:
   name: gsl
@@ -6,14 +6,14 @@ package:
 
 source:
   url: http://ftp.gnu.org/gnu/gsl/gsl-{{ version }}.tar.gz
-  sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
+  sha256: efbbf3785da0e53038be7907500628b466152dbc3c173a87de1b5eba2e23602b
   patches:
     # Taken from https://github.com/ampl/gsl/tree/v2.4.0
     - patch_for_windows.diff  # [win]
 
 build:
-  number: 2
-  skip:  True  # [win and vc<14]
+  number: 0
+  skip: true  # [win and vc<14]
   run_exports:
     # tends to break at minor revs
     # https://abi-laboratory.pro/index.php?view=timeline&l=gsl
@@ -57,7 +57,7 @@ about:
   license_file:
     - COPYING
     - getopt_LICENSE.txt  # [win]
-  summary: 'GNU Scientific Library'
+  summary: GNU Scientific Library
 
 extra:
   recipe-maintainers:
