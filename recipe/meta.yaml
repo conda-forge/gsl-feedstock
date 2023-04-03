@@ -12,8 +12,7 @@ source:
     - patch_for_windows.diff  # [win]
 
 build:
-  number: 0
-  skip: true  # [win and vc<14]
+  number: 1
   run_exports:
     # tends to break at minor revs
     # https://abi-laboratory.pro/index.php?view=timeline&l=gsl
