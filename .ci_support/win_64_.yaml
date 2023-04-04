@@ -1,6 +1,4 @@
 c_compiler:
-- vs2019
-c_compiler_version:
 - vs2017
 channel_sources:
 - conda-forge
