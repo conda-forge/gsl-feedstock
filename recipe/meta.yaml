@@ -12,8 +12,7 @@ source:
     - patch_for_windows.diff  # [win]
 
 build:
-  number: 0
-  skip: true  # [win and vc<14]
+  number: 1
   run_exports:
     # tends to break at minor revs
     # https://abi-laboratory.pro/index.php?view=timeline&l=gsl
@@ -22,6 +21,10 @@ build:
 requirements:
   build:
     - {{ compiler("c") }}
+    # - clang-16                  # [win]  -- failed
+    # - clang-14                  # [win]  -- failed
+    - clang-13                  # [win]
+    # - clang-12                  # [win] -- passed
     - autotools_clang_conda     # [win]
     - autoconf                  # [unix]
     - automake                  # [unix]
@@ -50,6 +53,7 @@ test:
     - ls -al $PREFIX/lib/libgsl.*.dylib                  # [osx]
     - ls -al $PREFIX/lib/libgslcblas.so.0                # [linux]
     - ls -al $PREFIX/lib/libgsl.so.*                     # [linux]
+    - test ! -f ${PREFIX}/lib/libgsl.a                   # [linux]
 
 about:
   home: http://www.gnu.org/software/gsl/
