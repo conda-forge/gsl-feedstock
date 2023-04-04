@@ -1,4 +1,4 @@
-c_compiler_version:         # [win]
-  - vs2017                  # [win]
-cxx_compiler_version:       # [win]
-  - vs2017                  # [win]
+c_compiler:         # [win]
+  - vs2017          # [win]
+cxx_compiler:       # [win]
+  - vs2017          # [win]
