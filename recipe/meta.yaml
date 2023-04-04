@@ -22,7 +22,8 @@ requirements:
   build:
     - {{ compiler("c") }}
     # - clang-16                  # [win]  -- failed
-    - clang-14                  # [win]  -- failed
+    # - clang-14                  # [win]  -- failed
+    - clang-13                  # [win]
     # - clang-12                  # [win] -- passed
     - autotools_clang_conda     # [win]
     - autoconf                  # [unix]
