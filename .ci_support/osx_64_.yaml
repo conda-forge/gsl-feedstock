@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '16'
+- '18'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -14,6 +14,8 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+gsl:
+- '2.7'
 libblas:
 - 3.9 *netlib
 libcblas:

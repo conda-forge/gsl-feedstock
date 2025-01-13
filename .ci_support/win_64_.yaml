@@ -6,6 +6,8 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+gsl:
+- '2.7'
 libblas:
 - 3.9 *netlib
 libcblas:
