@@ -23,7 +23,6 @@ requirements:
   build:
     - {{ compiler("c") }}
     - {{ stdlib("c") }}
-    - clang-13                  # [win]
     - autotools_clang_conda     # [win]
     - autoconf                  # [unix]
     - automake                  # [unix]
