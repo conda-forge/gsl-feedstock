@@ -7,7 +7,7 @@ set -x
 sed -i.bak "s/GSL_LIBADD=/GSL_LIBADD2=/g" configure.ac
 
 rm -rf config.*
-autoreconf -i
+autoreconf -vfi
 chmod +x configure
 
 # https://github.com/conda-forge/gsl-feedstock/issues/34#issuecomment-449305702
