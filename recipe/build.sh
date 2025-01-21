@@ -43,6 +43,10 @@ if [[ "$target_platform" == win* ]]; then
     # So disable for now. CMake build didn't run tests either.
     make check -j${CPU_COUNT} -k || true
     echo "no check on windows"
+    echo "pkg-config before"
+    cat $PREFIX/lib/pkconfig/gsl.pc
+    sed -i.bak "s@$(cygpath -u $PREFIX)@$PREFIX@g" $PREFIX/lib/pkconfig/gsl.pc
+    echo "pkg-config after"
 else
     make -j${CPU_COUNT}
     if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
