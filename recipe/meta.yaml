@@ -36,10 +36,10 @@ requirements:
 test:
   files:
     - test
-    - pkg-config
 
   requires:
     - {{ compiler('c') }}
+    - pkg-config
 
   commands:
     - gsl-config --prefix  # [not win]

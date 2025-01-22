@@ -70,6 +70,8 @@ else
     make install
 fi
 
+cat $PREFIX/lib/pkconfig/gsl.pc
+
 ls -al "$PREFIX"/lib
 ls -al "$PREFIX"/bin
 
