@@ -36,6 +36,7 @@ requirements:
 test:
   files:
     - test
+    - pkg-config
 
   requires:
     - {{ compiler('c') }}
@@ -51,6 +52,7 @@ test:
     - ls -al $PREFIX/lib/libgsl.*.dylib                  # [osx]
     - ls -al $PREFIX/lib/libgslcblas.so.0                # [linux]
     - ls -al $PREFIX/lib/libgsl.so.*                     # [linux]
+    - pkg-config --cflags --libs gsl
 
 about:
   home: http://www.gnu.org/software/gsl/
