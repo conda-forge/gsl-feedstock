@@ -17,6 +17,8 @@ if [[ "$target_platform" == win* ]]; then
     export CFLAGS="$CFLAGS -DGSL_DLL -DWIN32"
     export LDFLAGS="$LDFLAGS -lcblas"
     cp $RECIPE_DIR/getopt.h .
+    sed -i.bak "s/INLINE_FUN inline/INLINE_FUN static inline/g" gsl_inline.h
+    sed -i.bak "s/INLINE_DECL inline/INLINE_DECL static inline/g" gsl_inline.h
     ./configure --prefix=${PREFIX} \
                 --disable-static || (cat config.log && exit 1)
     cat config.log
