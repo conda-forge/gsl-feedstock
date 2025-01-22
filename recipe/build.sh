@@ -7,7 +7,7 @@ set -x
 sed -i.bak "s/GSL_LIBADD=/GSL_LIBADD2=/g" configure.ac
 
 rm -rf config.*
-autoreconf -i
+autoreconf -vfi
 chmod +x configure
 
 # https://github.com/conda-forge/gsl-feedstock/issues/34#issuecomment-449305702
@@ -17,6 +17,8 @@ if [[ "$target_platform" == win* ]]; then
     export CFLAGS="$CFLAGS -DGSL_DLL -DWIN32"
     export LDFLAGS="$LDFLAGS -lcblas"
     cp $RECIPE_DIR/getopt.h .
+    sed -i.bak "s/INLINE_FUN inline/INLINE_FUN static inline/g" gsl_inline.h
+    sed -i.bak "s/INLINE_DECL inline/INLINE_DECL static inline/g" gsl_inline.h
     ./configure --prefix=${PREFIX} \
                 --disable-static || (cat config.log && exit 1)
     cat config.log
@@ -67,6 +69,8 @@ else
     fi
     make install
 fi
+
+cat $PREFIX/lib/pkgconfig/gsl.pc
 
 ls -al "$PREFIX"/lib
 ls -al "$PREFIX"/bin
