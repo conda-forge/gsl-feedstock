@@ -40,6 +40,7 @@ test:
   requires:
     - {{ compiler('c') }}
     - pkg-config
+    - m2-grep   # [win]
 
   commands:
     - gsl-config --prefix  # [not win]
@@ -52,7 +53,8 @@ test:
     - ls -al $PREFIX/lib/libgsl.*.dylib                  # [osx]
     - ls -al $PREFIX/lib/libgslcblas.so.0                # [linux]
     - ls -al $PREFIX/lib/libgsl.so.*                     # [linux]
-    - pkg-config --cflags --libs gsl
+    - pkg-config --cflags --libs gsl | grep %LIBRARY_PREFIX%  # [win]
+    - pkg-config --cflags --libs gsl | grep $PREFIX           # [unix]
 
 about:
   home: http://www.gnu.org/software/gsl/
