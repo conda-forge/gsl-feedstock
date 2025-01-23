@@ -44,8 +44,8 @@ if [[ "$target_platform" == win* ]]; then
     make check -j${CPU_COUNT} -k || true
     echo "no check on windows"
     echo "pkg-config before"
-    cat $PREFIX/lib/pkconfig/gsl.pc
-    sed -i.bak "s@$(cygpath -u $PREFIX)@$PREFIX@g" $PREFIX/lib/pkconfig/gsl.pc
+    cat $PREFIX/lib/pkgconfig/gsl.pc
+    sed -i.bak "s@$(cygpath -u $PREFIX)@$PREFIX@g" $PREFIX/lib/pkgconfig/gsl.pc
     echo "pkg-config after"
 else
     make -j${CPU_COUNT}
