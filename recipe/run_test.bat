@@ -6,8 +6,13 @@ cd test
 echo "%PREFIX%\Library\include\gsl\gsl_types.h header during test"
 type "%PREFIX%\Library\include\gsl\gsl_types.h"
 
+FOR /F "tokens=* USEBACKQ" %%F IN (`pkg-config --cflags gsl`) DO (
+  SET CFLAGS=%%F
+)
+ECHO "CFLAGS: %CFLAGS%"
+
 :: Compile example that links gsl
-cl.exe /I%PREFIX%\Library\include\gsl gsl.lib regression_test.c
+cl.exe %CFLAGS% gsl.lib regression_test.c
 if errorlevel 1 exit 1
 
 :: Run test

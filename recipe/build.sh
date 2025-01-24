@@ -45,7 +45,8 @@ if [[ "$target_platform" == win* ]]; then
     echo "no check on windows"
     echo "pkg-config before"
     cat $PREFIX/lib/pkgconfig/gsl.pc
-    sed -i.bak "s@$(cygpath -u $PREFIX)@$PREFIX@g" $PREFIX/lib/pkgconfig/gsl.pc
+    PREFIX_WIN=$(cygpath -w $PREFIX)
+    sed -i.bak "s@$(cygpath -u $PREFIX)@${PREFIX_WIN//\\/\\\\}@g" $PREFIX/lib/pkgconfig/gsl.pc
     echo "pkg-config after"
 else
     make -j${CPU_COUNT}
@@ -93,4 +94,7 @@ elif [[ "$target_platform" == win* ]]; then
     rm "$PREFIX/lib/gslcblas.dll.lib"
     rm "$PREFIX/bin/gslcblas-0.dll"
     cp "$PREFIX/lib/cblas.lib" "$PREFIX/lib/gslcblas.lib"
+    # Ensure that the header on Windows is compatible out of the box
+    # with shared library (see https://github.com/conda-forge/gsl-feedstock/issues/50)
+    cp "${RECIPE_DIR}/windows_shared.gsl_types.h" "$PREFIX/include/gsl/gsl_types.h"
 fi
