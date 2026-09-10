@@ -41,7 +41,9 @@ if [[ "$target_platform" == win* ]]; then
     make install
     # There are some numerical issues with the tests as well as build issues.
     # So disable for now. CMake build didn't run tests either.
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:-}" != "" ]]; then
     make check -j${CPU_COUNT} -k || true
+fi
     echo "no check on windows"
     echo "pkg-config before"
     cat $PREFIX/lib/pkgconfig/gsl.pc
