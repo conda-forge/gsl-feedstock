@@ -2,7 +2,7 @@
 
 package:
   name: gsl
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: http://ftp.gnu.org/gnu/gsl/gsl-{{ version }}.tar.gz
